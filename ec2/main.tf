@@ -14,8 +14,8 @@ resource "aws_instance" "ec2" {
   }
 }
 
-  provisioner "remote-exec"{
-   connection {
+  provisioner "remote-exec" {
+    connection {
     host     = self_public_ip
     user     = "centos"
     password = "DevOps321"
