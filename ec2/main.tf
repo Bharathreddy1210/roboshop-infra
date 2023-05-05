@@ -12,15 +12,14 @@ resource "aws_instance" "ec2" {
   tags = {
     Name = var.component
   }
+  connection {
+    host = self_public_ip
+    user = "centos"
+    password = "DevOps321"
+  }
 }
 
- Provisioner "remote-exec" {
-
-   connection {
-     host = self_public_ip
-     user = "centos"
-     password = "DevOps321"
-   }
+ provisioner "remote-exec" {
 
    inline = [
      "git clone https://github.com/Bharathreddy1210/Shell-Scripting.git ",
