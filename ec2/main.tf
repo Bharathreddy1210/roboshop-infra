@@ -15,14 +15,16 @@ resource "aws_instance" "ec2" {
 
 }
 
-provisioner "remote-exec" {
+resource "null_resource" "provisioner" {
+  provisioner "remote-exec" {
 
-   connection {
-     host = self_public_ip
-     user = "centos"
-     password = "DevOps321"
-   }
+    connection {
+      host     = aws_instance.ec2.public_ip
+      user     = "centos"
+      password = "DevOps321"
 
+  }
+}
    inline = [
      "git clone https://github.com/Bharathreddy1210/Shell-Scripting.git ",
      "cd roboshop",
