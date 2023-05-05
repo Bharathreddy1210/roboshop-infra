@@ -6,3 +6,4 @@ module "ec2" {
   password = try(each.value["password"], "null")
   env = ""
 }
+
