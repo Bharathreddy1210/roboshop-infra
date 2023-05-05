@@ -25,7 +25,7 @@ resource "null_resource" "provisioner" {
 
   }
 }
-   inline = [
+    inline = [
      "git clone https://github.com/Bharathreddy1210/Shell-Scripting.git ",
      "cd roboshop",
      "cd components",
