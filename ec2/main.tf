@@ -13,9 +13,6 @@ resource "aws_instance" "ec2" {
     Name = var.component
   }
 
-}
-
-resource "null_resource" "provisioner" {
   provisioner "remote-exec" {
 
     connection {
@@ -23,16 +20,18 @@ resource "null_resource" "provisioner" {
       user     = "centos"
       password = "DevOps321"
 
-  }
-}
-    inline = [
-     "git clone https://github.com/Bharathreddy1210/Shell-Scripting.git ",
-     "cd roboshop",
-     "cd components",
-     "sudo bash ${var.component}.sh"
+    }
+  inline = [
+    "git clone https://github.com/Bharathreddy1210/Shell-Scripting.git ",
+    "cd roboshop",
+    "sudo bash ${var.component}.sh"
 
-   ]
+  ]
  }
+
+}
+
+
 
 resource "aws_security_group" "sg" {
   name        = "${var.component}.${var.env}.sg"
@@ -61,8 +60,9 @@ resource "aws_security_group" "sg" {
 
 variable "component" {}
 variable "instance_type" {}
-variable "env" {}
-
+variable "env" {
+  default = "dev"
+}
 output "private_ip" {
   value = aws_instance.ec2.private_ip
 }
