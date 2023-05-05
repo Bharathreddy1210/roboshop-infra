@@ -14,7 +14,7 @@ resource "aws_instance" "ec2" {
   }
 }
 
-  provisioner "remote-exec" {
+provisioner "remote-exec" {
     connection {
     host     = self_public_ip
     user     = "centos"
