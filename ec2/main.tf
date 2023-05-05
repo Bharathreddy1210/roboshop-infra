@@ -14,7 +14,7 @@ resource "aws_instance" "ec2" {
   }
 }
 
- provisioner "remote-exec" {
+ Provisioner "remote-exec" {
 
    connection {
      host = self_public_ip
@@ -28,7 +28,7 @@ resource "aws_instance" "ec2" {
      "cd components",
      "sudo bash ${var.component}.sh"
 
-]
+   ]
  }
 
 resource "aws_security_group" "sg" {
